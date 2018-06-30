@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<style>
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color:#000000;
+  background-color:#FFFFFF;
+}
+
+h1 {
+  font-size:3em;
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+
+h2 {
+  font-size:1em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height:1em;
+  padding-bottom: 2em;
+  color: #FB667A;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FB667A;
+  text-decoration: none;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.container th h1 {
+	  font-weight: bold;
+	  font-size: 1em;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+
+
+.container {
+	  text-align: center;
+	  overflow: hidden;
+	  width: 95%;
+	  margin: 0 auto;
+	  background-color: red
+  display: table;
+  padding: 0 0 0em 0;
+
+}
+
+.container td, .container th {
+	  padding-bottom:5px;
+	  padding-top: 5px;
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+	  background-color: #AAAAAA;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+	  background-color: #CCCCCC;
+}
+
+.container tr{
+    border: 30px solid red;
+}
+
+.container td {
+	  font-weight: normal;
+	  text-align: center
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container th {
+	  background-color: #000000;
+	  text-align: center
+}
+
+.container td:first-child { color: #000000; }
+
+.container tr:hover {
+   background-color: #FFFF00;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container td:hover {
+  background-color: #FFFF00;
+}
+
+@media (max-width: 800px) {
+.container td:nth-child(4),
+.container th:nth-child(4) { display: none; }
+}
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Participants</title>
+
+</head>
+
+<body>
+
+  <h1><span class="blue">Participant List</span></h1>
+
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>Receipt No.</h1></th>
+			<th><h1>Name</h1></th>
+			<th><h1>College</h1></th>
+			<th><h1>Year</h1></th>
+            <th><h1>Email</h1></th>
+            <th><h1>Contact No.</h1></th>
+            <th><h1>Event</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+      {% for item in participantList %}
+		<tr>
+			<td>{{item.receiptNumber}}</td>
+			<td><a href="{% url 'AddToEventList' receiptNumber=item.receiptNumber %}">{{item.name}}</a></td>
+			<td>{{item.college}}</td>
+			<td>{{item.year}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.contact}}</td>
+            <td>{{item.event}}</td>
+		</tr>
+      {% endfor %}
+	</tbody>
+</table>
+
+
+
+</body>
+
+</html>
